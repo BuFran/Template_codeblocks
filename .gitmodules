@@ -1,0 +1,6 @@
+[submodule "lib/opencm3"]
+	path = lib/opencm3
+	url = https://github.com/BuFran/libopencm3-binaries.git
+[submodule "lib/hal"]
+	path = lib/hal
+	url = https://github.com/BuFran/hal.git

@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="template" />
+		<Option pch_mode="2" />
+		<Option compiler="arm-elf-gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/Debug/template.elf" prefix_auto="0" extension_auto="0" />
+				<Option object_output="obj/Debug/" />
+				<Option type="1" />
+				<Option compiler="arm-elf-gcc" />
+				<Compiler>
+					<Add option="-g" />
+				</Compiler>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/template.elf" prefix_auto="0" extension_auto="0" />
+				<Option object_output="obj/" />
+				<Option type="1" />
+				<Option compiler="arm-elf-gcc" />
+				<Compiler>
+					<Add option="-fexpensive-optimizations" />
+					<Add option="-Os" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-mthumb" />
+			<Add option="-Wall" />
+			<Add option="-mcpu=cortex-m4" />
+			<Add option="-mfloat-abi=hard -mfpu=fpv4-sp-d16" />
+			<Add option="--std=gnu99" />
+			<Add option="-fno-common" />
+			<Add option="-ffunction-sections" />
+			<Add option="-fdata-sections" />
+			<Add option="-DSTM32F4" />
+			<Add directory="lib/opencm3/include" />
+			<Add directory="lib/hal/include" />
+			<Add directory="inc" />
+		</Compiler>
+		<Linker>
+			<Add option="-Tld/stm32f4/stm32f407vgt6.ld" />
+			<Add option="-mthumb" />
+			<Add option="-mcpu=cortex-m4" />
+			<Add option="-mfloat-abi=hard -mfpu=fpv4-sp-d16" />
+			<Add option="--static" />
+			<Add option="-nostartfiles" />
+			<Add option="-Wl,--gc-sections" />
+			<Add option="-Wl,-Map=$(TARGET_OUTPUT_DIR)$(TARGET_OUTPUT_BASENAME).map" />
+			<Add library="opencm3_stm32f4" />
+			<Add directory="lib/opencm3/lib" />
+		</Linker>
+		<ExtraCommands>
+			<Add after="arm-none-eabi-objcopy.exe -O binary $(TARGET_OUTPUT_FILE) $(TARGET_OUTPUT_DIR)$(TARGET_OUTPUT_BASENAME).bin" />
+			<Add after="arm-none-eabi-objcopy.exe -O ihex $(TARGET_OUTPUT_FILE) $(TARGET_OUTPUT_DIR)$(TARGET_OUTPUT_BASENAME).hex" />
+			<Add after="cmd /c arm-none-eabi-objdump.exe -S $(TARGET_OUTPUT_FILE) &gt;$(TARGET_OUTPUT_DIR)$(TARGET_OUTPUT_BASENAME).lst" />
+		</ExtraCommands>
+		<Unit filename="bin/Debug/boardtest.lst" />
+		<Unit filename="inc/board.h" />
+		<Unit filename="ld/stm32f4/stm32f407vgt6.ld" />
+		<Unit filename="lib/hal/include/hal/arch/stm32/pin_common.h" />
+		<Unit filename="lib/hal/include/hal/arch/stm32/pin_v0.h" />
+		<Unit filename="lib/hal/include/hal/arch/stm32/pin_v1.h" />
+		<Unit filename="lib/hal/include/hal/common.h" />
+		<Unit filename="lib/hal/include/hal/delay.h" />
+		<Unit filename="lib/hal/include/hal/pin.h" />
+		<Unit filename="lib/opencm3/include/libopencm3/stm32/common/adc_common_v1.h" />
+		<Unit filename="lib/opencm3/include/libopencm3/stm32/common/crc_common_all.h" />
+		<Unit filename="lib/opencm3/include/libopencm3/stm32/common/crypto_common_f24.h" />
+		<Unit filename="lib/opencm3/include/libopencm3/stm32/common/dac_common_all.h" />
+		<Unit filename="lib/opencm3/include/libopencm3/stm32/common/dma_common_f24.h" />
+		<Unit filename="lib/opencm3/include/libopencm3/stm32/common/dma_common_l1f013.h" />
+		<Unit filename="lib/opencm3/include/libopencm3/stm32/common/exti_common_all.h" />
+		<Unit filename="lib/opencm3/include/libopencm3/stm32/common/flash_common_f01.h" />
+		<Unit filename="lib/opencm3/include/libopencm3/stm32/common/flash_common_f234.h" />
+		<Unit filename="lib/opencm3/include/libopencm3/stm32/common/flash_common_f24.h" />
+		<Unit filename="lib/opencm3/include/libopencm3/stm32/common/gpio_common_all.h" />
+		<Unit filename="lib/opencm3/include/libopencm3/stm32/common/gpio_common_f234.h" />
+		<Unit filename="lib/opencm3/include/libopencm3/stm32/common/gpio_common_f24.h" />
+		<Unit filename="lib/opencm3/include/libopencm3/stm32/common/hash_common_f24.h" />
+		<Unit filename="lib/opencm3/include/libopencm3/stm32/common/i2c_common_all.h" />
+		<Unit filename="lib/opencm3/include/libopencm3/stm32/common/i2c_common_f24.h" />
+		<Unit filename="lib/opencm3/include/libopencm3/stm32/common/iwdg_common_all.h" />
+		<Unit filename="lib/opencm3/include/libopencm3/stm32/common/pwr_common_all.h" />
+		<Unit filename="lib/opencm3/include/libopencm3/stm32/common/rcc_common_all.h" />
+		<Unit filename="lib/opencm3/include/libopencm3/stm32/common/rng_common_f24.h" />
+		<Unit filename="lib/opencm3/include/libopencm3/stm32/common/rtc_common_l1f024.h" />
+		<Unit filename="lib/opencm3/include/libopencm3/stm32/common/spi_common_all.h" />
+		<Unit filename="lib/opencm3/include/libopencm3/stm32/common/spi_common_f03.h" />
+		<Unit filename="lib/opencm3/include/libopencm3/stm32/common/spi_common_f24.h" />
+		<Unit filename="lib/opencm3/include/libopencm3/stm32/common/spi_common_l1f124.h" />
+		<Unit filename="lib/opencm3/include/libopencm3/stm32/common/syscfg_common_l1f234.h" />
+		<Unit filename="lib/opencm3/include/libopencm3/stm32/common/timer_common_all.h" />
+		<Unit filename="lib/opencm3/include/libopencm3/stm32/common/timer_common_f24.h" />
+		<Unit filename="lib/opencm3/include/libopencm3/stm32/common/usart_common_all.h" />
+		<Unit filename="lib/opencm3/include/libopencm3/stm32/common/usart_common_f124.h" />
+		<Unit filename="lib/opencm3/include/libopencm3/stm32/common/usart_common_f24.h" />
+		<Unit filename="lib/opencm3/include/libopencm3/stm32/f4/adc.h" />
+		<Unit filename="lib/opencm3/include/libopencm3/stm32/f4/crc.h" />
+		<Unit filename="lib/opencm3/include/libopencm3/stm32/f4/crypto.h" />
+		<Unit filename="lib/opencm3/include/libopencm3/stm32/f4/dac.h" />
+		<Unit filename="lib/opencm3/include/libopencm3/stm32/f4/dma.h" />
+		<Unit filename="lib/opencm3/include/libopencm3/stm32/f4/doc-stm32f4.h" />
+		<Unit filename="lib/opencm3/include/libopencm3/stm32/f4/exti.h" />
+		<Unit filename="lib/opencm3/include/libopencm3/stm32/f4/flash.h" />
+		<Unit filename="lib/opencm3/include/libopencm3/stm32/f4/fmc.h" />
+		<Unit filename="lib/opencm3/include/libopencm3/stm32/f4/gpio.h" />
+		<Unit filename="lib/opencm3/include/libopencm3/stm32/f4/hash.h" />
+		<Unit filename="lib/opencm3/include/libopencm3/stm32/f4/i2c.h" />
+		<Unit filename="lib/opencm3/include/libopencm3/stm32/f4/iwdg.h" />
+		<Unit filename="lib/opencm3/include/libopencm3/stm32/f4/memorymap.h" />
+		<Unit filename="lib/opencm3/include/libopencm3/stm32/f4/nvic.h" />
+		<Unit filename="lib/opencm3/include/libopencm3/stm32/f4/pwr.h" />
+		<Unit filename="lib/opencm3/include/libopencm3/stm32/f4/rcc.h" />
+		<Unit filename="lib/opencm3/include/libopencm3/stm32/f4/rng.h" />
+		<Unit filename="lib/opencm3/include/libopencm3/stm32/f4/rtc.h" />
+		<Unit filename="lib/opencm3/include/libopencm3/stm32/f4/spi.h" />
+		<Unit filename="lib/opencm3/include/libopencm3/stm32/f4/syscfg.h" />
+		<Unit filename="lib/opencm3/include/libopencm3/stm32/f4/timer.h" />
+		<Unit filename="lib/opencm3/include/libopencm3/stm32/f4/usart.h" />
+		<Unit filename="src/main.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Extensions>
+			<code_completion />
+			<envvars />
+			<debugger>
+				<remote_debugging>
+					<options conn_type="2" serial_port="COM3" serial_baud="115200" additional_cmds="mon connect_srst enable&#x0A;mon swdp_scan&#x0A;att 1&#x0A;load&#x0A;b main&#x0A;run" extended_remote="1" />
+				</remote_debugging>
+				<remote_debugging target="Release">
+					<options conn_type="2" serial_port="COM3" serial_baud="115200" extended_remote="1" />
+				</remote_debugging>
+				<remote_debugging target="Debug">
+					<options conn_type="2" serial_port="COM3" serial_baud="115200" extended_remote="1" />
+				</remote_debugging>
+			</debugger>
+			<editor_config active="1" use_tabs="1" tab_indents="1" tab_width="4" indent="4" eol_mode="0" />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>
